@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        body {
+            padding: 0%;
+            margin: 0%;
+        }
+        nav {
+            margin: 0;
+            padding: 0;
+            background-color: #000; 
+        }
+
+        
+        nav {
+            display: flex;
+            align-items: center; 
+            justify-content: space-between; 
+        }
+
+       
+        #logo img {
+            width: 100px; 
+            height: auto; 
+            /* border: 1px solid white; */
+        }
+
+        
+        #srhBox input[type="text"] {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-right: 5px;
+            /* border: 1px solid red; */
+            width: 200px;
+            background-color: rgb(198, 194, 194);
+        }
+
+        #srhBox button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            /* height: fit-content; */
+        }
+
+        
+        #icon {
+            margin-right: 10px; 
+            color: white; 
+            display: flex;
+            /* border: 1px solid red; */
+            width: 230px;
+            justify-content: space-around;
+            cursor: pointer;
+
+        }
+
+        #icon i {
+            margin-right: 5px; 
+            cursor: pointer;
+            margin-top: 18px;
+            cursor: pointer;
+        }
+        #cat{
+            display: flex;
+            justify-content: space-around;
+            background-color: rgb(70, 68, 68);
+            color: white;
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            padding-left: 50px;
+            padding-right: 50px;
+            cursor: pointer;
+        }
+        .poster > img{
+            height: 300px;
+            width: 90%;
+            margin-left: 60px;
+        }
+        .text{
+            display: flex;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-align: center;
+            padding-left:30% ;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            /* border: 1px solid black; */
+        }
+        .pink {
+            width: 100px;
+            border: 1px solid rgb(246, 90, 116);
+            margin-top: 30px;
+            margin: 30px;
+            height: 0;
+        }
+        #best_saller {
+            /* border: 1px solid red; */
+            padding: 100px;
+            background-color: #333;
+            background-image: url("data:image/jpeg;base64,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");
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        #products {
+            /* display: flex; */
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: auto;
+            display: flex;
+            justify-content: space-evenly;
+            /* border: 1px solid red; */
+        }
+        .product_cart {
+            /* border: 1px solid black; */
+            /* height: 500px; */
+            width: 250px;
+            border-radius: 10px;
+            text-align: center;
+            color: rgb(193, 186, 186);
+            background-color:white;padding: 20px;
+
+        }
+        .product_cart>img{
+            height: auto;
+            width: 100%;
+            border-radius: 10px;
+        }
+        .addToCart {
+            display: flex;
+            padding-left: 60px;
+        }
+        .addToCart >i {
+            margin-right: 10px;
+            color: black;
+        }
+        .addToCart >div{
+            color: black;
+            /* border: 1px dolid red; */
+        }
+        hr {
+            margin-left: 10%;
+            margin-right: 10%;
+            color: grey;
+        }
+        #first{
+            margin-left: 20px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-weight: bold;
+            /* margin-top:-10px ; */
+        }
+        #first>span{
+            color: palevioletred;
+            font-size: 22px;
+            font-weight: lighter;
+            /* margin: top 100px; ; */
+            margin-left: 10px;
+        }
+        #About{
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            /* background-color: #000; */
+        }
+        #searchBox>input {
+            height: 40px;
+            width: 30%;
+        }
+        #searchBox>button{
+            height: 45px;
+            width: 15%;
+            background-color: black;
+            color: white;
+        }
+        #lastPart{
+            border: 1px solid black;
+            text-align: center;
+            margin-top: 100px;
+            background-color: #000;
+        }
+        #lastPart>img{
+            margin-top: -80px;
+            border-radius: 100px;
+        }
+        #lastPart>img+h3{
+            font-size: 30px;
+            margin-top: -5px;
+            color: white;
+        }
+        #socialMediaIcon{
+            width: 40%;
+            margin: auto;
+            /* border: 1px solid red; */
+            display: flex;
+            justify-content: space-between;
+        }
+        #socialMediaIcon>i{
+            font-size: 40px;
+            color: white;
+        }
+        #Term{
+            /* border:  1px solid red; */
+            width: 60%;
+            display: flex;
+            justify-content: space-between;
+            margin: auto;
+            font-size: 20px;
+            color: aliceblue;
+        }
+        hr+h2{
+            color:white ;
+            text-align: left;
+            margin-left: 100px;
+        }
+        #callUs{
+            border: 1px solid black;
+            display: flex;
+            justify-content: space-around;
+            width: 90%;
+            margin: auto;
+        }
+        #callUs>div{
+            text-align: start;
+        }
+        #callUs>div>h3{
+            color: #696565;
+        }
+        #callUs>div>h2{
+            color: aliceblue;
+        }
+        #twoPoster{
+            display: flex;
+            width: 100%;
+            margin: auto;
+            justify-content: space-around;
+        }
+        #twoPoster>div>img{
+            height:400px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <nav>
+        <div id="logo">
+            <img src="data:image/png;base64,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" 
+            alt="logo">
+        </div>
+
+        <div id="srhBox">
+            <input type="text" placeholder="Try Liquid Lipstick">
+            <button>Search</button>
+        </div>
+
+        <div id="icon">
+            <i class="fa-solid fa-user"></i>
+            <p>Login/rigister</p>
+            <i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
+            <i class="fa-solid fa-gear"></i>
+        </div>
+    </nav>
+    
+    <div id="cat">
+        <p>LIPS</p>
+        <p>EYES</p>
+        <p>FACE</p>
+        <p>NAILS</p>
+        <p>SKINCARE</p>
+        <p>ACCESSORIES</p>
+        <p>GIFING</p>
+        <p>BESTSELLER</p>
+        <p>NEW LAUNCHES</p>
+        <p>OFFER</p>
+        <p>BLOG</p>
+    </div>
+    
+    <div class="poster">
+        <img src="https://in.sugarcosmetics.com/_next/image?url=https%3A%2F%2Fd32baadbbpueqt.cloudfront.net%2FHomepage%2Ff2f896f0-0134-446d-b9ad-b35d2fe5267d.jpg&w=3840&q=75" alt="">
+    </div>
+    
+    <div class="text">
+        <div class="pink"></div>
+        <h2>CLUB VELLVETTE</h2>
+        <div class="pink"></div>
+    </div>
+    
+    <div class="poster">
+        <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSAz_MSj9WNedzogn45XhcuOcFK8vq7tg8oo7ZZvrpq1szN19T5" alt="">
+    </div>
+
+    <div id="best_saller">
+        <div class="text">
+            <div class="pink"></div>
+            <h2>BESTSELLERS</h2>
+            <div class="pink"></div>
+        </div>
+        
+        <div id="products">
+            <div class="product_cart">
+                <img src="https://in.sugarcosmetics.com/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0906%2F2558%2Ffiles%2F01_332ccf25-8e0f-4b40-be7b-3e322eeeb653.jpg%3Fv%3D1712560893&w=384&q=75"
+                 alt="">
+                <p>Matte Attack <br>Transformproof</p>
+                <p>Rs.999 <span>MRP Rs.1799</span></p>
+                <div class="addToCart">
+                    <i class="fa-solid fa-heart"></i>
+                    <div>CHOOSE ITEM</div>
+                </div>
+            </div>  
+            <div class="product_cart">
+                <img src="https://in.sugarcosmetics.com/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0906%2F2558%2Fproducts%2F07_6fa35950-4830-4e97-80ea-d40f2fb42801.jpg%3Fv%3D1680622820&w=384&q=75"
+                 alt="">
+                <p>Matte As Hell Crayon...</p>
+                <p>Rs.999 <span>MRP Rs.1799</span></p>
+                <div class="addToCart">
+                    <i class="fa-solid fa-heart"></i>
+                    <div>CHOOSE ITEM</div>
+                </div>
+            </div>
+            <div class="product_cart">
+                <img src="https://in.sugarcosmetics.com/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0906%2F2558%2Ffiles%2F370205924-01_1aef1c2e-8e41-42a2-89c5-70dab3b356ac.jpg%3Fv%3D1698238462&w=384&q=75"
+                 alt="">
+                <p>Matte As Hell Crayon...</p>
+                <p>Rs.999 <span>MRP Rs.1799</span></p>
+                <div class="addToCart">
+                    <i class="fa-solid fa-heart"></i>
+                    <div>CHOOSE ITEM</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text">
+        <div class="pink"></div>
+        <h2>EXCLUSIVE TREATS</h2>
+        <div class="pink"></div>
+    </div>
+
+    <div class="poster">
+        <img src="https://in.sugarcosmetics.com/_next/image?url=https%3A%2F%2Fd32baadbbpueqt.cloudfront.net%2FHomepage%2Fbaeeda78-b0fd-4ffd-ac80-a357256dd11f.jpg&w=3840&q=75" alt="">
+    </div>
+
+    <div id="best_saller">
+        <div class="text">
+            <div class="pink"></div>
+            <h2>CURATED KITS FOR YOU</h2>
+            <div class="pink"></div>
+        </div>
+        
+        <div id="products">
+            <div class="product_cart">
+                <img src="https://in.sugarcosmetics.com/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0906%2F2558%2Ffiles%2FNude-Edition-Makeup-Kit---WBG_1.jpg%3Fv%3D1690905055&w=384&q=75"
+                 alt="">
+                <p>Nude Edition <br>Makeup Kit</p>
+                <p>Rs.1499 <span>MRP Rs.1996</span></p>
+                <div class="addToCart">
+                    <i class="fa-solid fa-heart"></i>
+                    <div>CHOOSE ITEM</div>
+                </div>
+            </div>
+            <div class="product_cart">
+                <img src="https://in.sugarcosmetics.com/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0906%2F2558%2Ffiles%2FDateNightMakeupkit-1.jpg%3Fv%3D1695397255&w=384&q=75"
+                 alt="">
+                <p>Date Night <br>Makeup kit</p>
+                <p>Rs.1599 <span>MRP Rs.2193</span></p>
+                <div class="addToCart">
+                    <i class="fa-solid fa-heart"></i>
+                    <div>CHOOSE ITEM</div>
+                </div>
+            </div>    
+            <div class="product_cart">
+                <img src="https://in.sugarcosmetics.com/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0906%2F2558%2Fproducts%2Fcombo-image.jpg%3Fv%3D1636991116&w=384&q=75"
+                 alt="">
+                <p>4-in-1 Makeup <br>Set</p>
+                <p>Rs.899 <span>MRP Rs.1146</span></p>
+                <div class="addToCart">
+                    <i class="fa-solid fa-heart"></i>
+                    <div>CHOOSE ITEM</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text">
+        <div class="pink"></div>
+        <h2>REFER YOUR FRIENDS</h2>
+        <div class="pink"></div>
+    </div>
+
+    <div class="poster">
+        <img src="https://in.sugarcosmetics.com/_next/image?url=https%3A%2F%2Fd32baadbbpueqt.cloudfront.net%2FHomepage%2F20395dda-05f5-4bdf-8015-a795d7c22678.jpg&w=1920&q=75" alt="">
+    </div>
+
+    <div class="text">
+        <div class="pink"></div>
+        <h2>HOT DEALS</h2>
+        <div class="pink"></div>
+    </div>
+
+    <div id="twoPoster">
+        <div>
+            <img src="https://d32baadbbpueqt.cloudfront.net/Homepage/9b92bb73-edd9-4b40-84be-c0a3f9c32d7c.gif" alt="">
+        </div>
+        <div>
+            <img src="https://in.sugarcosmetics.com/_next/image?url=https://d32baadbbpueqt.cloudfront.net/Homepage/a376e8d4-5e02-4dfb-b649-3dc4807499c5.jpg&w=1920&q=75" alt="">
+        </div>
+    </div>
+
+    <div id="best_saller">
+        <div class="text">
+            <div class="pink"></div>
+            <h2>JUST-IN</h2>
+            <div class="pink"></div>
+        </div>
+        
+        <div id="products">
+            <div class="product_cart">
+                <img src="https://in.sugarcosmetics.com/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0906%2F2558%2Fproducts%2F1_e241e84d-810a-46ab-abe9-c50f157061a8.jpg%3Fv%3D1680367311&w=384&q=75"
+                 alt="">
+                <p>Mousse Muse Lip <br> Cream</p>
+                <p>8 Shades</p>
+                <p>Rs.599 <span></span></p>
+                <div class="addToCart">
+                    <i class="fa-solid fa-heart"></i>
+                    <div>CHOOSE ITEM</div>
+                </div>
+            </div>
+            <div class="product_cart">
+                <img src="https://in.sugarcosmetics.com/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0906%2F2558%2Ffiles%2F464576762-launch_sugar-la-la-love-18hr-liquid-lipstick-wbg-powered-by-images_01.jpg%3Fv%3D1688227587&w=384&q=75"
+                 alt="">
+                <p>Limited-Edition La <br>La Love 18HR..</p>
+                <p>8 Shades</p>
+                <p>Rs.279 <span>MRP Rs.399</span></p>
+                <div class="addToCart">
+                    <i class="fa-solid fa-heart"></i>
+                    <div>CHOOSE ITEM</div>
+                </div>
+            </div>    
+            <div class="product_cart">
+                <img src="https://in.sugarcosmetics.com/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0906%2F2558%2Ffiles%2FVday-Kit---Powered-by-images-_design__1.jpg%3Fv%3D1708443925&w=384&q=75"
+                 alt="">
+                <p>love Locked <br>Makeip Kit</p>
+                <p>Rs.1499 <span>MRP Rs.1945</span></p>
+                <div class="addToCart">
+                    <i class="fa-solid fa-heart"></i>
+                    <div>CHOOSE ITEM</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text">
+        <div class="pink"></div>
+        <h2>LA LA LOVE 18HR LIQUID LIPSTICK | 6 NEW SHADES</h2>
+        <div class="pink"></div>
+    </div>
+
+    <div class="poster">
+        <img src="https://in.sugarcosmetics.com/_next/image?url=https://d32baadbbpueqt.cloudfront.net/Homepage/57c6031c-5120-45cc-b7d3-9c1f74f0e4c4.png&w=2048&q=75" alt="">
+    </div>
+
+    <div class="text">
+        <div class="pink"></div>
+        <h2>TOP PICKS OF THE WEEK
+        </h2>
+        <div class="pink"></div>
+    </div>
+
+    <div id="products">
+        <div class="product_cart">
+            <img src="https://in.sugarcosmetics.com/_next/image?url=https://d32baadbbpueqt.cloudfront.net/Homepage/c84926c4-8914-484e-8ad5-649fd1980d1f.jpg&w=2048&q=75"
+             alt="">
+        </div>
+        <div class="product_cart">
+            <img src="https://in.sugarcosmetics.com/_next/image?url=https://d32baadbbpueqt.cloudfront.net/Homepage/cd5c828f-a59f-4342-8955-25c7a9f7c70d.jpg&w=2048&q=75"
+             alt="">
+        </div>    
+        <div class="product_cart">
+            <img src="https://in.sugarcosmetics.com/_next/image?url=https://d32baadbbpueqt.cloudfront.net/Homepage/cd5c828f-a59f-4342-8955-25c7a9f7c70d.jpg&w=2048&q=75"
+             alt="">
+        </div>
+    </div>
+        
+    <div id="best_saller">
+        <div class="text">
+            <div class="pink"></div>
+            <h2>SUPER SAVERS</h2>
+            <div class="pink"></div>
+        </div>
+            
+        <div id="products">
+            <div class="product_cart">
+                <img src="https://in.sugarcosmetics.com/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0906%2F2558%2Ffiles%2FRageForCoveragePDPImagesparent1stcard.jpg%3Fv%3D1685636215&w=384&q=75"
+                 alt="">
+                <p>Rage For Coverage <br>Foundation</p>
+                <p>8 Shades</p>
+                <p>Rs.425 <span>MRP 849</span></p>
+                <div class="addToCart">
+                    <i class="fa-solid fa-heart"></i>
+                    <div>CHOOSE ITEM</div>
+                </div>                
+            </div>
+            <div class="product_cart">
+                <img src="https://in.sugarcosmetics.com/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0906%2F2558%2Fproducts%2FAirKissPowderPoweredByImagesArtboard1.jpg%3Fv%3D1644421218&w=384&q=75"
+                 alt="">
+                <p>Air Kiss Powder<br>Lipstick</p>
+                <p>3 Shades</p>
+                <p>Rs.250 <span>MRP Rs.499</span></p>
+                <div class="addToCart">
+                    <i class="fa-solid fa-heart"></i>
+                    <div>CHOOSE ITEM</div>
+                </div>
+            </div>    
+            <div class="product_cart">
+                <img src="https://in.sugarcosmetics.com/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0906%2F2558%2Ffiles%2FValue-Sets---WBG-Listing_1_9756c528-c984-4323-af6f-4fe3239ee42c.jpg%3Fv%3D1694187870&w=384&q=75"
+                 alt="">
+                <p>Day Night Makeup<br>Duo</p>
+                <p>Rs.499 <span>MRP Rs.648</span></p>
+                <div class="addToCart">
+                    <i class="fa-solid fa-heart"></i>
+                    <div>CHOOSE ITEM</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text">
+        <div class="pink"></div>
+        <h2>NEWLY LAUNCHED</h2>
+        <div class="pink"></div>
+    </div>
+
+    <div class="poster">
+        <img src="https://in.sugarcosmetics.com/_next/image?url=https%3A%2F%2Fd32baadbbpueqt.cloudfront.net%2FHomepage%2F7a6f082b-d4ba-4b93-93b7-aa79cc63d877.jpg&w=2048&q=75" alt="">
+    </div>
+
+    <div id="best_saller">
+        <div class="text">
+            <div class="pink"></div>
+            <h2>SKINCARE BASIC</h2>
+            <div class="pink"></div>
+        </div>
+            
+        <div id="products">
+            <div class="product_cart">
+                <img src="https://in.sugarcosmetics.com/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0906%2F2558%2Ffiles%2Fparentpage_f3c8f153-1e62-4a22-bc0c-da67c39a4529.jpg%3Fv%3D1685635643&w=384&q=75"
+                 alt="">
+                <p>Tipsy Lops<br>Moisturizing Balm</p>
+                <p>6 Shades</p>
+                <p>Rs.199 <span></span></p>
+                <div class="addToCart">
+                    <i class="fa-solid fa-heart"></i>
+                    <div>CHOOSE ITEM</div>
+                </div>                
+            </div>
+            <div class="product_cart">
+                <img src="https://in.sugarcosmetics.com/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0906%2F2558%2Fproducts%2Fmoisturiser.jpg%3Fv%3D1626968292&w=384&q=75"
+                 alt="">
+                <p>Aquaholic Priming<br>Moisturizer</p>
+                <p>3 Shades</p>
+                <p>649<span></span></p>
+                <div class="addToCart">
+                    <i class="fa-solid fa-heart"></i>
+                    <div>CHOOSE ITEM</div>
+                </div>
+            </div>    
+        </div>
+    </div>
+
+    <div class="text">
+        <div class="pink"></div>
+        <h2>SUGAR BEAUTY BLOG</h2>
+        <div class="pink"></div>
+    </div>
+
+    <div id="products">
+        <div class="product_cart">
+            <img src="https://in.sugarcosmetics.com/_next/image?url=https://d32baadbbpueqt.cloudfront.net/Homepage/79f6cb09-9676-4973-bfad-5812deec472c.jpg&w=2048&q=75"
+             alt="">
+        </div>
+        <div class="product_cart">
+            <img src="https://in.sugarcosmetics.com/_next/image?url=https://d32baadbbpueqt.cloudfront.net/Homepage/9e38f392-ad5f-47b2-8f1a-65f7b8f7d7b7.jpg&w=2048&q=75"
+             alt="">
+        </div>    
+        <div class="product_cart">
+            <img src="https://in.sugarcosmetics.com/_next/image?url=https://d32baadbbpueqt.cloudfront.net/Homepage/ba3ccda6-f7ef-4618-a20f-a25094a58de3.jpg&w=2048&q=75"
+             alt="">
+        </div>
+    </div>
+
+    <div id="best_saller">
+        <div class="text">
+            <div class="pink"></div>
+            <h2>MERCH STATION</h2>
+            <div class="pink"></div>
+        </div>
+            
+        <div id="products">
+            <div class="product_cart">
+                <img src="https://in.sugarcosmetics.com/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0906%2F2558%2Fproducts%2FLaptop-Bag-WBG-1_d9b0a265-b8a5-4a24-a8f8-7d5b0f51788b.jpg%3Fv%3D1675182065&w=384&q=75"
+                 alt="">
+                <p>Laptop Bag 15<br>Inch Purple/Te..</p>
+                <p>Rs.999 <span></span></p>
+                <div class="addToCart">
+                    <i class="fa-solid fa-heart"></i>
+                    <div>CHOOSE ITEM</div>
+                </div>                
+            </div>
+            <div class="product_cart">
+                <img src="https://in.sugarcosmetics.com/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0906%2F2558%2Fproducts%2FD2C---Merch---Laptop-Sleeves_1.jpg%3Fv%3D1625240618&w=384&q=75"
+                 alt="">
+                <p>Easy PC Laptop<br>Sleeve</p>
+                <p>799<span></span></p>
+                <div class="addToCart">
+                    <i class="fa-solid fa-heart"></i>
+                    <div>CHOOSE ITEM</div>
+                </div>
+            </div>   
+            <div class="product_cart">
+                <img src="https://in.sugarcosmetics.com/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0906%2F2558%2Fproducts%2Fsugar-cosmetics-tote-chic-canvas-carry-28477196927059.jpg%3Fv%3D1624532788&w=384&q=75"
+                 alt="">
+                <p>Tote Chic Canvas<br>Carry</p>
+                <p>799<span></span></p>
+                <div class="addToCart">
+                    <i class="fa-solid fa-heart"></i>
+                    <div>CHOOSE ITEM</div>
+                </div>
+            </div>    
+        </div>
+    </div>
+    <hr>
+    <p id="first">READ MORE ABOUT SUGAR COSMETICS <span> > </span></p>
+    <div id="About">
+        <div class="text">
+            <div class="pink"></div>
+            <h2>LET’S STAY IN TOUCH</h2>
+            <div class="pink"></div>
+        </div>
+        <p>Get the latest beauty tips straight to your inbox. Can’t wait to connect!</p>
+        <div id="searchBox">
+            <input type="text" placeholder="Enter Email">
+            <button>SUBSCRIBE</button>
+        </div>
+    </div>
+    <div id="lastPart">
+        <img src="data:image/jpeg;base64,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"
+         alt="">
+         <h3>SUGAR</h3>
+
+        <div id="socialMediaIcon">
+            <i class="fa-brands fa-facebook"></i>            
+            <i class="fa-brands fa-youtube"></i>
+            <i class="fa-brands fa-twitter"></i>            
+            <i class="fa-light fa-envelopes-bulk"></i>            
+            <i class="fa-brands fa-tumblr"></i>            
+            <i class="fa-brands fa-pinterest"></i>            
+            <i class="fa-brands fa-instagram"></i>         
+        </div>
+        
+        <hr>
+
+        <div id="Term">
+            <p>Stores</p>
+            <p>Elite</p>
+            <p>Terms & Conditions</p>
+            <p>Returns</p>
+            <p>FAQs</p>
+            <p>About Us</p>
+        </div>
+         
+        <hr>
+        
+        <h2>GET IN TOUCH</h2>
+        
+        <div id="callUs">
+            <div>
+                <h2>Call us at</h2>
+                <h3>
+                    1800-209-9933 <br>
+                    Monday to friday: 09:00 AM - 09:00 PM <br>
+                    Saturday: 09:00 AM - 07:00 PM
+                </h3>
+                <h2>Influencer Collab</h2>
+                <h3>Join Us</h3>
+            </div>
+            <div>
+                <h2>Support              Careers       Press & Media</h2>
+                <h3>hello@sugarcosmeetics.com We're hiring! pr@sugarcosmetics.com</h3>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
